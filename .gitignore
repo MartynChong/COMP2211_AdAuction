@@ -8,3 +8,4 @@
 /dataSources.local.xml
 # IntelliJ complie folder
 /app/target/
+/app/.ideas
