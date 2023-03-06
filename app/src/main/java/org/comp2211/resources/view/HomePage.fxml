@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -8,13 +10,184 @@
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextFlow prefHeight="200.0" prefWidth="200.0" />
-            <SplitPane dividerPositions="0.2692307692307692" prefHeight="530.0" prefWidth="1200.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="125.0" prefWidth="343.0" />
-              </items>
-            </SplitPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="150.0" prefWidth="640.0" text="Homepage" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Label>
+                        <BorderPane HBox.hgrow="ALWAYS">
+                           <left>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="320.0" text="Please upload your file here:" BorderPane.alignment="CENTER_RIGHT" />
+                           </left>
+                           <center>
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="106.0" text="Select a file" BorderPane.alignment="CENTER_LEFT">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <BorderPane.margin>
+                                    <Insets left="20.0" />
+                                 </BorderPane.margin>
+                              </Button>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox prefHeight="631.0" prefWidth="1200.0">
+                     <children>
+                        <HBox prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Total Impressions per ad:" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children></HBox>
+                        <Separator prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Clicks per ad:" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="254.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="110.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="64.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Cost per thousand impressions" textAlignment="CENTER" wrapText="true">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="114.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="118.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Cost per click" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="168.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="172.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Click-through rate per ad" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="222.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="226.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Unique clicks per ad" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="276.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="280.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Bounce rate per ad" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="330.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="334.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Conversions per ad" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="384.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="388.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Costs per acquisition per ad" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="438.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox layoutX="10.0" layoutY="442.0" prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Total campaign cost" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="492.0" prefHeight="4.0" prefWidth="1200.0" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
    </children>
