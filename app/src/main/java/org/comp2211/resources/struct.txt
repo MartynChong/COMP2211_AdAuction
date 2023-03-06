@@ -1,0 +1,5 @@
+# What is "resources" for?
+
+- FXML files in the view package.
+- Images/video/anything of that nature within the media folder.
+-

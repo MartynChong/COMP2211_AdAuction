@@ -1,10 +1,20 @@
-package org.comp2211.view;
+package org.comp2211.controllers;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import org.comp2211.App;
+
+
+
+/* This file will be deprecated
+*
+**/
+
+
+
+
 
 /**
  * DashBoard window, for increment 1
