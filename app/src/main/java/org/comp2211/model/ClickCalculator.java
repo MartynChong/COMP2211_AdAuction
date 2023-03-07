@@ -8,7 +8,9 @@ import java.sql.*;
 // - View the number of unique clicks to determine whether the ad is attractive for a wide audience or not, allowing us to make adjustments to it if need be. [M]
 // SELECT strftime('%d-%m-%Y %H:%M:%f', click_date/1000.0, 'unixepoch') FROM clicks WHERE id = '8895519749317550080' - FOR DATE/TIME
 public class ClickCalculator {
-    private String databaseFilePath = "COMP2211_AdAuction/app/src/main/java/org/comp2211/resources/testSQL/test.db";
+//    private String databaseFilePath = "src/main/java/org/comp2211/resources/testSQL/test.db";
+  private String databaseFilePath =
+      "D:\\Programming\\CS uni work\\Year 2\\Software Engineering Group\\COMP2211_AdAuction\\app\\src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
     private Connection conn;
 
     public ClickCalculator() {
@@ -54,13 +56,31 @@ public class ClickCalculator {
     }
 
     // - Total Cost of all clicks
-    public int getTotalCost() {
+    public double getTotalCost() {
         try {
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM clicks");
             while (intResult.next()) {
-                int totalCost = intResult.getInt("SUM(cost)");
-                return totalCost;
+                double totalCost = intResult.getDouble("SUM(cost)");
+                return (double) (Math.round(totalCost * 100.0) / 100.0);
+            }
+            intResult.close();
+            stmt.close();
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    // - Cost per Click AKA sum of costs / number of clicks
+    public double getCPC() {
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet intResult = stmt.executeQuery("SELECT SUM(cost)/COUNT(*) FROM clicks");
+            while (intResult.next()) {
+                double totalCost = intResult.getDouble("SUM(cost)/COUNT(*)");
+                return (double) (Math.round(totalCost * 100.0) / 100.0);
             }
             intResult.close();
             stmt.close();
@@ -85,6 +105,7 @@ public class ClickCalculator {
         System.out.println(clickCalc.getTotalClicks());
         System.out.println(clickCalc.getUniqueClicks());
         System.out.println(clickCalc.getTotalCost());
+        System.out.println(clickCalc.getCPC());
         clickCalc.closeConn();
     }
 }
