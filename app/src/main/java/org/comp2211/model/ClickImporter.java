@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ClickImporter {
     private String clickFilePath;
-    private String databaseFilePath = "COMP2211_AdAuction/app/src/main/java/org/comp2211/resources/testSQL/test.db";
+    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
 
     /**
      * Initialise the connection to db.

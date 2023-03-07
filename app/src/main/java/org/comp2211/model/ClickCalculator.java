@@ -10,7 +10,7 @@ import java.sql.*;
 public class ClickCalculator {
 //    private String databaseFilePath = "src/main/java/org/comp2211/resources/testSQL/test.db";
   private String databaseFilePath =
-      "D:\\Programming\\CS uni work\\Year 2\\Software Engineering Group\\COMP2211_AdAuction\\app\\src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
+      "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
     private Connection conn;
 
     public ClickCalculator() {

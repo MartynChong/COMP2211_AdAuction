@@ -92,9 +92,7 @@ public class ImpressionImporter {
                 stmt.addBatch();
                 stmt.clearParameters();
                 i--;
-                System.out.println(i);
                 if (i == 0) {
-                    System.out.println(i);
                     stmt.executeBatch();
                     i = 5000000;
                 }

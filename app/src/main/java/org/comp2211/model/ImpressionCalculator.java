@@ -13,7 +13,6 @@ public class ImpressionCalculator {
             e.printStackTrace();
         }
     }
-
     public int getUniques() {
         try {
             Statement stmt = conn.createStatement();

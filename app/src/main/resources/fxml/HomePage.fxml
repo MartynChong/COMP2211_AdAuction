@@ -45,7 +45,7 @@
                            <center>
                               <HBox alignment="CENTER" prefHeight="180.0" prefWidth="380.0" spacing="20.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="106.0" text="clicks.csv">
+                                    <Button alignment="CENTER" onAction="#chooseClickFile" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="106.0" text="clicks.csv">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -53,7 +53,7 @@
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Button>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="66.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="118.0" text="impressions.csv" wrapText="true">
+                                    <Button alignment="CENTER" onAction="#chooseImprFile" contentDisplay="CENTER" layoutX="10.0" layoutY="66.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="118.0" text="impressions.csv" wrapText="true">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
