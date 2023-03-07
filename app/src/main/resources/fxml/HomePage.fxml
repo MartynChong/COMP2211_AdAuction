@@ -21,20 +21,37 @@
                         </Label>
                         <BorderPane HBox.hgrow="ALWAYS">
                            <left>
-                              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="320.0" text="Please upload your file here:" BorderPane.alignment="CENTER_RIGHT" />
+                              <Label prefHeight="17.0" prefWidth="180.0" text="Please upload your file here:" BorderPane.alignment="CENTER_RIGHT" />
                            </left>
                            <center>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="106.0" text="Select a file" BorderPane.alignment="CENTER_LEFT">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                                 <BorderPane.margin>
-                                    <Insets left="20.0" />
-                                 </BorderPane.margin>
-                              </Button>
+                              <HBox alignment="CENTER" prefHeight="180.0" prefWidth="380.0" spacing="20.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="106.0" text="clicks.csv">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="66.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="118.0" text="impressions.csv" wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="66.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="106.0" text="server.csv">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </center>
                         </BorderPane>
                      </children>
