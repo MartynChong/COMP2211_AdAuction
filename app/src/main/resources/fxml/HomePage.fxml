@@ -92,7 +92,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel9" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="1" textAlignment="CENTER">
+                              <Label fx:id="totalImprLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="1" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -129,7 +129,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="3" textAlignment="CENTER" >
+                              <Label fx:id="uniqueImprLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="3" textAlignment="CENTER" >
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -262,7 +262,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel8" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="10" textAlignment="CENTER">
+                              <Label fx:id="cPMLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="10" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
