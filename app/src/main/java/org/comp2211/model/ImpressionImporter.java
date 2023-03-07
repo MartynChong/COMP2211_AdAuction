@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ImpressionImporter {
     private String imprFilePath;
-    private String databaseFilePath = "E:\\test.db";
+    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
 
     /**
      * Initialise the connection to db.
