@@ -27,7 +27,7 @@ public class HomepageController {
     public void handleRefreshButton(){
         System.out.println(clickCalculator.getTotalClicks());
         totalClicksLabel.setText(Integer.toString(clickCalculator.getTotalClicks()));
-        totalCostLabel.setText(Double.toString(clickCalculator.getTotalCost()));
+        totalCostLabel.setText("£" + clickCalculator.getTotalCost());
         cPCLabel.setText("£" + clickCalculator.getCPC());
         totalImprLabel.setText(String.valueOf(impressionCalculator.getImpr()));
         uniqueImprLabel.setText(String.valueOf(impressionCalculator.getUniques()));
