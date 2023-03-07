@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ImpressionImporter {
     private String imprFilePath;
-    private String databaseFilePath = "E:\\test.db";
+    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
 
     /**
      * Initialise the connection to db.
@@ -116,7 +116,7 @@ public class ImpressionImporter {
     public static void main(String[] args) {
         ImpressionImporter impressionImporter = new ImpressionImporter();
         impressionImporter.initialise();
-        impressionImporter.setFilePath("D:\\Downloads\\2_month_campaign\\impression_log.csv");
+        impressionImporter.setFilePath("D:\\Downloads\\2_week_campaign_1\\2_week_campaign_2\\impression_log.csv");
         impressionImporter.insertRecord();
     }
 }
