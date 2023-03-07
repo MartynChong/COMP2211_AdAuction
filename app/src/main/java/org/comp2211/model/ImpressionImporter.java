@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ImpressionImporter {
     private String imprFilePath;
-    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
+    private String databaseFilePath = "E:\\test.db";
 
     /**
      * Initialise the connection to db.
@@ -61,8 +61,9 @@ public class ImpressionImporter {
             bufferedLog.close();
             reader.close();
             Connection conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
+            conn.setAutoCommit(false);
             PreparedStatement stmt = conn.prepareStatement(insertStmt);
-            int i = 20;
+            int i = 1000000;
             for (String[] entry : logs) {
                 Timestamp impress_date = Timestamp.valueOf(entry[0]);
                 String uid = entry[1];
@@ -89,15 +90,18 @@ public class ImpressionImporter {
                 stmt.setString(6, context);
                 stmt.setString(7, cost);
                 stmt.addBatch();
+                stmt.clearParameters();
                 i--;
-
+                System.out.println(i);
                 if (i == 0) {
+                    System.out.println(i);
                     stmt.executeBatch();
-                    i = 20;
+                    i = 5000000;
                 }
             }
 
             stmt.executeBatch();
+            conn.commit();
             stmt.close();
             conn.close();
             return true;
@@ -112,7 +116,7 @@ public class ImpressionImporter {
     public static void main(String[] args) {
         ImpressionImporter impressionImporter = new ImpressionImporter();
         impressionImporter.initialise();
-        impressionImporter.setFilePath("D:\\Downloads\\2_week_campaign_1\\2_week_campaign_2\\small_log.csv");
-//        impressionImporter.insertRecord();
+        impressionImporter.setFilePath("D:\\Downloads\\2_month_campaign\\impression_log.csv");
+        impressionImporter.insertRecord();
     }
 }
