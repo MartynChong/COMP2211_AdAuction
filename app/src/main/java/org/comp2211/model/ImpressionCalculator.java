@@ -5,7 +5,6 @@ import java.sql.*;
 public class ImpressionCalculator {
     private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
     private Connection conn;
-    private ClickCalculator cliclCalc = new ClickCalculator();
 
     public ImpressionCalculator() {
         try {
@@ -54,7 +53,7 @@ public class ImpressionCalculator {
      * Get cost per thousand impressions
      * @return cost per thousand impressions
      */
-    public float getCPM() {
+    public double getCPM() {
         try {
             Statement stmt = conn.createStatement();
             ResultSet uniquesResult = stmt.executeQuery("SELECT SUM (cost) AS \"CPM\" FROM impression;");
@@ -67,16 +66,28 @@ public class ImpressionCalculator {
 
             uniquesResult.close();
             stmt.close();
-            return costs / imprs * 1000;
+            return (double) Math.round((costs / imprs * 1000) * 100 / 100);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return -1;
     }
-    public float getCTR() {
-        float click = cliclCalc.getTotalClicks();
-        float impr = this.getImpr();
-        return click / impr;
+
+    public double getImprCost() {
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM impression;");
+            while (intResult.next()) {
+                double totalCost = intResult.getDouble("SUM(cost)");
+                return (double) (Math.round(totalCost * 100.0) / 100.0);
+            }
+            intResult.close();
+            stmt.close();
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public void closeConn() {

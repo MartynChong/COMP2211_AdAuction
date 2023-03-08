@@ -31,11 +31,11 @@ public class HomepageController {
         cPCLabel.setText("£" + clickCalculator.getCPC());
         totalImprLabel.setText(String.valueOf(impressionCalculator.getImpr()));
         uniqueImprLabel.setText(String.valueOf(impressionCalculator.getUniques()));
-        cPMLabel.setText("£" + String.format("%.02f",impressionCalculator.getCPM()));
+        cPMLabel.setText("£" + impressionCalculator.getCPM());
         bounceLabel.setText(String.valueOf(serverLogCalc.getBounce()));
         conversionLabel.setText(String.valueOf(serverLogCalc.getConver()));
-        ctrLabel.setText(String.format("%.02f",impressionCalculator.getCTR()));
-        cpaLabel.setText(String.format("%.02f",serverLogCalc.getCPA()));
+        ctrLabel.setText(String.format("%.02f",clickCalculator.getCTR()));
+        cpaLabel.setText("£" + String.format("%.02f",serverLogCalc.getCPA()));
     }
 
     public void chooseClickFile() {

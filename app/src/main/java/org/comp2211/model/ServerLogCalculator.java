@@ -6,6 +6,7 @@ public class ServerLogCalculator {
     private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
     private Connection conn;
     private ClickCalculator clickCalc = new ClickCalculator();
+    private ImpressionCalculator imprCalc = new ImpressionCalculator();
 
     public ServerLogCalculator() {
         try {
@@ -76,9 +77,21 @@ public class ServerLogCalculator {
      * @return cost per acquisition
      */
     public double getCPA() {
-        double totalCost = clickCalc.getTotalCost();
-        double acquisition = this.getConver();
-        return totalCost / acquisition;
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet cpaResult = stmt.executeQuery("SELECT SUM (impression.cost) AS impr_cost, SUM (clicks.cost) AS click_cost FROM impression INNER JOIN clicks on clicks.id = impression.id AND click_date = impress_date INNER JOIN ( SELECT entry_date, id AS server_log_id FROM server_log WHERE conversion = 1 ) ON entry_date = click_date AND server_log_id = clicks.id;");
+            while (cpaResult.next()) {
+                double imprCost = cpaResult.getDouble("impr_cost");
+                double clickCost = cpaResult.getDouble("click_cost");
+                return (double) (Math.round((imprCost + clickCost) * 100.0) / 100.0);
+            }
+            cpaResult.close();
+            stmt.close();
+            return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public void closeConn() {
