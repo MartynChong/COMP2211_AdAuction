@@ -61,7 +61,7 @@
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Button>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="66.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="106.0" text="server.csv">
+                                    <Button alignment="CENTER" onAction="#chooseServerLogFile" contentDisplay="CENTER" layoutX="116.0" layoutY="66.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="106.0" text="server.csv">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -148,7 +148,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel2" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="4" textAlignment="CENTER">
+                              <Label fx:id="bounceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="4" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -167,7 +167,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel3" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="5" textAlignment="CENTER">
+                              <Label fx:id="conversionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="5" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -205,7 +205,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel5" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="7" textAlignment="CENTER">
+                              <Label fx:id="ctrLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="7" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -215,7 +215,7 @@
                         <Separator layoutX="10.0" layoutY="330.0" prefHeight="4.0" prefWidth="1200.0" />
                         <HBox layoutX="10.0" layoutY="334.0" prefHeight="50.0" prefWidth="1200.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Conversions per Ad" textAlignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Conversions per Acquisition" textAlignment="CENTER">
                                  <HBox.margin>
                                     <Insets left="25.0" />
                                  </HBox.margin>
@@ -224,7 +224,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="totalClicksLabel6" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="8" textAlignment="CENTER">
+                              <Label fx:id="cpaLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="8" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

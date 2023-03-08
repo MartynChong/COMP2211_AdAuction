@@ -114,7 +114,7 @@ public class ImpressionImporter {
     public static void main(String[] args) {
         ImpressionImporter impressionImporter = new ImpressionImporter();
         impressionImporter.initialise();
-    impressionImporter.setFilePath(
+        impressionImporter.setFilePath(
         "D:\\Programming\\CS uni work\\Year 2\\Software Engineering Group\\COMP2211_AdAuction\\app\\src\\main\\java\\org\\comp2211\\resources\\csvFiles\\impression_log.csv");
         impressionImporter.insertRecord();
     }

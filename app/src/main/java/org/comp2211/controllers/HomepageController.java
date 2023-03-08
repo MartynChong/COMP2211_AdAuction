@@ -4,10 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.comp2211.model.ClickCalculator;
-import org.comp2211.model.ClickImporter;
-import org.comp2211.model.ImpressionCalculator;
-import org.comp2211.model.ImpressionImporter;
+import org.comp2211.model.*;
 
 import java.io.File;
 
@@ -19,7 +16,10 @@ public class HomepageController {
     public Label totalClicksLabel, totalCostLabel, cPCLabel;
     private ImpressionCalculator impressionCalculator = new ImpressionCalculator();
     private ImpressionImporter imprImporter = new ImpressionImporter();
+    private ServerLogImporter serverLogImporter = new ServerLogImporter();
+    private ServerLogCalculator serverLogCalc = new ServerLogCalculator();
     public Label totalImprLabel, uniqueImprLabel, cPMLabel;
+    public Label bounceLabel, conversionLabel, ctrLabel, cpaLabel;
     private Stage fileChooserStage = new Stage();
     FileChooser fileChooser = new FileChooser();
 
@@ -31,7 +31,11 @@ public class HomepageController {
         cPCLabel.setText("£" + clickCalculator.getCPC());
         totalImprLabel.setText(String.valueOf(impressionCalculator.getImpr()));
         uniqueImprLabel.setText(String.valueOf(impressionCalculator.getUniques()));
-        cPMLabel.setText("£" + impressionCalculator.getCPM());
+        cPMLabel.setText("£" + String.format("%.02f",impressionCalculator.getCPM()));
+        bounceLabel.setText(String.valueOf(serverLogCalc.getBounce()));
+        conversionLabel.setText(String.valueOf(serverLogCalc.getConver()));
+        ctrLabel.setText(String.format("%.02f",impressionCalculator.getCTR()));
+        cpaLabel.setText(String.format("%.02f",serverLogCalc.getCPA()));
     }
 
     public void chooseClickFile() {
@@ -42,6 +46,7 @@ public class HomepageController {
         clickImporter.initialise();
         clickImporter.insertRecord();
     }
+
     public void chooseImprFile() {
         FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter(".csv files", "*.csv");
         fileChooser.getExtensionFilters().add(csvFilter);
@@ -51,4 +56,12 @@ public class HomepageController {
         imprImporter.insertRecord();
     }
 
+    public void chooseServerLogFile() {
+        FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter(".csv files", "*.csv");
+        fileChooser.getExtensionFilters().add(csvFilter);
+        File serverLogFile = fileChooser.showOpenDialog(fileChooserStage);
+        serverLogImporter.setFilePath(serverLogFile.getPath());
+        serverLogImporter.initialise();
+        serverLogImporter.insertRecord();
+    }
 }

@@ -5,6 +5,7 @@ import java.sql.*;
 public class ImpressionCalculator {
     private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
     private Connection conn;
+    private ClickCalculator cliclCalc = new ClickCalculator();
 
     public ImpressionCalculator() {
         try {
@@ -49,6 +50,10 @@ public class ImpressionCalculator {
         return -1;
     }
 
+    /**
+     * Get cost per thousand impressions
+     * @return cost per thousand impressions
+     */
     public float getCPM() {
         try {
             Statement stmt = conn.createStatement();
@@ -67,6 +72,11 @@ public class ImpressionCalculator {
             e.printStackTrace();
         }
         return -1;
+    }
+    public float getCTR() {
+        float click = cliclCalc.getTotalClicks();
+        float impr = this.getImpr();
+        return click / impr;
     }
 
     public void closeConn() {
