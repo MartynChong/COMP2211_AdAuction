@@ -19,7 +19,7 @@ public class HomepageController {
     private ServerLogImporter serverLogImporter = new ServerLogImporter();
     private ServerLogCalculator serverLogCalc = new ServerLogCalculator();
     public Label totalImprLabel, uniqueImprLabel, cPMLabel;
-    public Label bounceLabel, conversionLabel, ctrLabel, cpaLabel;
+    public Label bounceLabel, conversionLabel, ctrLabel, cpaLabel, bounceRateLabel;
     private Stage fileChooserStage = new Stage();
     FileChooser fileChooser = new FileChooser();
 
@@ -36,6 +36,7 @@ public class HomepageController {
         conversionLabel.setText(String.valueOf(serverLogCalc.getConver()));
         ctrLabel.setText(String.format("%.02f",clickCalculator.getCTR()) + "%");
         cpaLabel.setText("£" + String.format("%.02f",serverLogCalc.getCPA()));
+        bounceRateLabel.setText(String.format("%.02f", serverLogCalc.getBounceRate()));
     }
 
     public void chooseClickFile() {
