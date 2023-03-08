@@ -60,7 +60,7 @@ public class ServerLogCalculator {
             ResultSet bounceRateResult = stmt.executeQuery("SELECT COUNT (*) AS total_clicks FROM server_log;");
             while (bounceRateResult.next()) {
                 float total_clicks = bounceRateResult.getFloat("total_clicks");
-                return bounce / total_clicks;
+                return bounce / total_clicks * 100;
             }
 
             bounceRateResult.close();

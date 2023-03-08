@@ -57,13 +57,13 @@ public class ClickCalculator {
     }
 
     // - Total Cost of all clicks
-    public double getTotalCost() {
+    public float getTotalCost() {
         try {
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM clicks");
             while (intResult.next()) {
-                double clickCost = (Math.round(intResult.getDouble("SUM(cost)") * 100.0) / 100.0);
-                double imprCost = imprCalc.getImprCost();
+                float clickCost = intResult.getFloat("SUM(cost)");
+                float imprCost = imprCalc.getImprCost();
                 return clickCost + imprCost;
             }
             intResult.close();

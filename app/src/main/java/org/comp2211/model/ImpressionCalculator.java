@@ -56,13 +56,13 @@ public class ImpressionCalculator {
         return -1;
     }
 
-    public double getImprCost() {
+    public float getImprCost() {
         try {
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM impression;");
             while (intResult.next()) {
-                double totalCost = intResult.getDouble("SUM(cost)");
-                return (double) (Math.round(totalCost * 100.0) / 100.0);
+                float totalCost = intResult.getFloat("SUM(cost)");
+                return totalCost;
             }
             intResult.close();
             stmt.close();

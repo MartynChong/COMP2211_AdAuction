@@ -27,7 +27,7 @@ public class HomepageController {
     public void handleRefreshButton(){
         System.out.println(clickCalculator.getTotalClicks());
         totalClicksLabel.setText(Integer.toString(clickCalculator.getTotalClicks()));
-        totalCostLabel.setText("£" + clickCalculator.getTotalCost());
+        totalCostLabel.setText("£" + String.format("%.02f", clickCalculator.getTotalCost()));
         cPCLabel.setText("£" + clickCalculator.getCPC());
         totalImprLabel.setText(String.valueOf(impressionCalculator.getImpr()));
         uniqueImprLabel.setText(String.valueOf(clickCalculator.getUniqueClicks()));
@@ -36,7 +36,7 @@ public class HomepageController {
         conversionLabel.setText(String.valueOf(serverLogCalc.getConver()));
         ctrLabel.setText(String.format("%.02f",clickCalculator.getCTR()) + "%");
         cpaLabel.setText("£" + String.format("%.02f",serverLogCalc.getCPA()));
-        bounceRateLabel.setText(String.format("%.02f", serverLogCalc.getBounceRate()));
+        bounceRateLabel.setText(String.format("%.02f", serverLogCalc.getBounceRate()) + "%");
     }
 
     public void chooseClickFile() {
