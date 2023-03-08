@@ -53,7 +53,7 @@ public class ImpressionCalculator {
      * Get cost per thousand impressions
      * @return cost per thousand impressions
      */
-    public double getCPM() {
+    public float getCPM() {
         try {
             Statement stmt = conn.createStatement();
             ResultSet uniquesResult = stmt.executeQuery("SELECT SUM (cost) AS \"CPM\" FROM impression;");
@@ -62,11 +62,11 @@ public class ImpressionCalculator {
                 System.out.println();
                 costs = uniquesResult.getFloat("CPM");
             }
-            float imprs = (float) getImpr();
+            float imprs = getImpr();
 
             uniquesResult.close();
             stmt.close();
-            return (double) Math.round((costs / imprs * 1000) * 100 / 100);
+            return (costs / imprs) * 1000;
         } catch (SQLException e) {
             e.printStackTrace();
         }
