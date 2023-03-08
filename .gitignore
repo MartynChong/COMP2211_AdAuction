@@ -10,4 +10,4 @@
 /app/target/
 /app/.idea/
 /app/out/
-/app/testdb.db/
+/app/testdb.db
