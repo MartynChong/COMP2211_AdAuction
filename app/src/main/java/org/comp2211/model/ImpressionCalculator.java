@@ -14,14 +14,14 @@ public class ImpressionCalculator {
             Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet uniquesResult = stmt.executeQuery("SELECT COUNT (id) AS \"Uniques\" FROM impression;");
+            int uniqueImpression = 0;
             while (uniquesResult.next()) {
-                int uniqueImpression = uniquesResult.getInt("Uniques");
-                return uniqueImpression;
+                uniqueImpression = uniquesResult.getInt("Uniques");
             }
             uniquesResult.close();
             stmt.close();
             conn.close();
-            return 0;
+            return uniqueImpression;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -58,14 +58,14 @@ public class ImpressionCalculator {
             Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM impression;");
+            float totalCost = 0;
             while (intResult.next()) {
-                float totalCost = intResult.getFloat("SUM(cost)");
-                return totalCost;
+                totalCost = intResult.getFloat("SUM(cost)");
             }
             intResult.close();
             stmt.close();
             conn.close();
-            return 0;
+            return totalCost;
         } catch (SQLException e) {
             e.printStackTrace();
         }

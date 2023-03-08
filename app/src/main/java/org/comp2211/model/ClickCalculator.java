@@ -22,13 +22,15 @@ public class ClickCalculator {
             Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT COUNT(*) FROM clicks ");
+            int totalClick = 0;
             while (intResult.next()) {
-                return intResult.getInt("COUNT(*)");
+                totalClick = intResult.getInt("COUNT(*)");
+                break;
             }
             intResult.close();
             stmt.close();
             conn.close();
-            return 0;
+            return totalClick;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,13 +43,15 @@ public class ClickCalculator {
             Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT COUNT(DISTINCT id) FROM clicks");
+            int uniques = 0;
             while (intResult.next()) {
-                return intResult.getInt("COUNT(DISTINCT id)");
+                uniques =  intResult.getInt("COUNT(DISTINCT id)");
+                break;
             }
             intResult.close();
             stmt.close();
             conn.close();
-            return 0;
+            return uniques;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -60,15 +64,16 @@ public class ClickCalculator {
             Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM clicks");
+            float clickCost = 0;
+            float imprCost = 0;
             while (intResult.next()) {
-                float clickCost = intResult.getFloat("SUM(cost)");
-                float imprCost = imprCalc.getImprCost();
-                return clickCost + imprCost;
+                clickCost = intResult.getFloat("SUM(cost)");
+                imprCost = imprCalc.getImprCost();
             }
             intResult.close();
             stmt.close();
             conn.close();
-            return 0;
+            return clickCost + imprCost;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -81,20 +86,24 @@ public class ClickCalculator {
             Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost)/COUNT(*) FROM clicks");
+            double totalCost = 0;
             while (intResult.next()) {
-                double totalCost = intResult.getDouble("SUM(cost)/COUNT(*)");
-                return (double) (Math.round(totalCost * 100.0) / 100.0);
+                totalCost = intResult.getDouble("SUM(cost)/COUNT(*)");
             }
             intResult.close();
             stmt.close();
             conn.close();
-            return 0;
+            return (double) (Math.round(totalCost * 100.0) / 100.0);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return -1;
     }
 
+    /**
+     * Calculate click through rate
+     * @return click through rate
+     */
     public float getCTR() {
         float click = getTotalClicks();
         float impr = imprCalc.getImpr();

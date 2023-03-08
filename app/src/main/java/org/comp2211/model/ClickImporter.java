@@ -85,6 +85,7 @@ public class ClickImporter {
             stmt.executeBatch();
             conn.commit();
             stmt.close();
+            conn.setAutoCommit(true);
             conn.close();
             return true;
         } catch (FileNotFoundException e) {
