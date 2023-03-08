@@ -28,7 +28,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="refreshButton" onAction="#handleRefreshButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Refresh">
+                              <Button fx:id="refreshButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleRefreshButton" prefHeight="38.0" prefWidth="84.0" text="Refresh">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -45,7 +45,7 @@
                            <center>
                               <HBox alignment="CENTER" prefHeight="180.0" prefWidth="380.0" spacing="20.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button alignment="CENTER" onAction="#chooseClickFile" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="106.0" text="clicks.csv">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chooseClickFile" prefHeight="44.0" prefWidth="106.0" text="clicks.csv">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -53,7 +53,7 @@
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Button>
-                                    <Button alignment="CENTER" onAction="#chooseImprFile" contentDisplay="CENTER" layoutX="10.0" layoutY="66.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="118.0" text="impressions.csv" wrapText="true">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="66.0" mnemonicParsing="false" onAction="#chooseImprFile" prefHeight="44.0" prefWidth="118.0" text="impressions.csv" wrapText="true">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -61,7 +61,7 @@
                                           <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Button>
-                                    <Button alignment="CENTER" onAction="#chooseServerLogFile" contentDisplay="CENTER" layoutX="116.0" layoutY="66.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="106.0" text="server.csv">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="66.0" mnemonicParsing="false" onAction="#chooseServerLogFile" prefHeight="46.0" prefWidth="106.0" text="server.csv">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -129,7 +129,7 @@
                                  </font>
                               </Label>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
-                              <Label fx:id="uniqueImprLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="3" textAlignment="CENTER" >
+                              <Label fx:id="uniqueImprLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="3" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -270,6 +270,24 @@
                            </children>
                         </HBox>
                         <Separator layoutX="10.0" layoutY="492.0" prefHeight="4.0" prefWidth="1200.0" />
+                        <HBox prefHeight="50.0" prefWidth="1200.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="213.0" text="Bounce Rate" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                              <Label fx:id="bounceRateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="955.0" text="11" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </content>
