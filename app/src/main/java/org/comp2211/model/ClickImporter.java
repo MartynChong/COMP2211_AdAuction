@@ -93,6 +93,28 @@ public class ClickImporter {
         return false;
     }
 
+    /**
+     * Check if the provided csv file is a valid click file.
+     * @return True if the file is valid.
+     */
+    public boolean isValid(String path) {
+        try {
+            FileReader clickLog = new FileReader(path);
+            BufferedReader bufferedLog = new BufferedReader(clickLog);
+            String header = bufferedLog.readLine();
+            bufferedLog.close();
+            clickLog.close();
+            String[] headerList = header.split(",");
+            if (headerList[0].equals("Date") && headerList[1].equals("ID") && headerList[2].equals("Click Cost")) {
+                return true;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         ClickImporter clickImporter = new ClickImporter();
         clickImporter.initialise();

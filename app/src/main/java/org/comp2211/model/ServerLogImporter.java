@@ -109,6 +109,30 @@ public class ServerLogImporter {
         return false;
     }
 
+    /**
+     * Check if the provided csv file is a valid impression file.
+     * @return True if the file is valid.
+     */
+    public boolean isValid(String path) {
+        try {
+            FileReader serverLog = new FileReader(path);
+            BufferedReader bufferedLog = new BufferedReader(serverLog);
+            String header = bufferedLog.readLine();
+            bufferedLog.close();
+            serverLog.close();
+            String[] headerList = header.split(",");
+            if (headerList[0].equals("Entry Date") && headerList[1].equals("ID") && headerList[2].equals("Exit Date")
+                    && headerList[3].equals("Pages Viewed") && headerList[4].equals("Conversion")) {
+                return true;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     public static void main(String[] args) {
         ServerLogImporter importer = new ServerLogImporter();
         importer.initialise();

@@ -111,6 +111,30 @@ public class ImpressionImporter {
         return false;
     }
 
+    /**
+     * Check if the provided csv file is a valid impression file.
+     * @return True if the file is valid.
+     */
+    public boolean isValid(String path) {
+        try {
+            FileReader imprLog = new FileReader(path);
+            BufferedReader bufferedLog = new BufferedReader(imprLog);
+            String header = bufferedLog.readLine();
+            bufferedLog.close();
+            imprLog.close();
+            String[] headerList = header.split(",");
+            if (headerList[0].equals("Date") && headerList[1].equals("ID") && headerList[2].equals("Gender")
+                    && headerList[3].equals("Age") && headerList[4].equals("Income") && headerList[5].equals("Context")
+                    && headerList[6].equals("Impression Cost")) {
+                return true;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         ImpressionImporter impressionImporter = new ImpressionImporter();
         impressionImporter.initialise();

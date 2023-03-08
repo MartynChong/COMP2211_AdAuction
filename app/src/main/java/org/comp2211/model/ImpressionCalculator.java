@@ -19,7 +19,6 @@ public class ImpressionCalculator {
             Statement stmt = conn.createStatement();
             ResultSet uniquesResult = stmt.executeQuery("SELECT COUNT (id) AS \"Uniques\" FROM impression;");
             while (uniquesResult.next()) {
-                System.out.println();
                 int uniqueImpression = uniquesResult.getInt("Uniques");
                 return uniqueImpression;
             }
@@ -42,7 +41,6 @@ public class ImpressionCalculator {
             ResultSet uniquesResult = stmt.executeQuery("SELECT SUM (cost) AS \"CPM\" FROM impression;");
             float costs = 0;
             while (uniquesResult.next()) {
-                System.out.println();
                 costs = uniquesResult.getFloat("CPM");
             }
             float imprs = getImpr();
