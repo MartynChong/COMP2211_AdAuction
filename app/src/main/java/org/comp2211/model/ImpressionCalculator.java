@@ -13,23 +13,6 @@ public class ImpressionCalculator {
             e.printStackTrace();
         }
     }
-    public int getUniques() {
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet uniquesResult = stmt.executeQuery("SELECT COUNT (DISTINCT id) AS \"Uniques\" FROM impression;");
-            while (uniquesResult.next()) {
-                System.out.println();
-                int uniqueImpression = uniquesResult.getInt("Uniques");
-                return uniqueImpression;
-            }
-            uniquesResult.close();
-            stmt.close();
-            return 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
 
     public int getImpr() {
         try {

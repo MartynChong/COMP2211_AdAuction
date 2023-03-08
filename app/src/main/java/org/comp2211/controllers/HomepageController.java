@@ -30,11 +30,11 @@ public class HomepageController {
         totalCostLabel.setText("£" + clickCalculator.getTotalCost());
         cPCLabel.setText("£" + clickCalculator.getCPC());
         totalImprLabel.setText(String.valueOf(impressionCalculator.getImpr()));
-        uniqueImprLabel.setText(String.valueOf(impressionCalculator.getUniques()));
+        uniqueImprLabel.setText(String.valueOf(clickCalculator.getUniqueClicks()));
         cPMLabel.setText("£" + String.format("%.02f",impressionCalculator.getCPM()));
         bounceLabel.setText(String.valueOf(serverLogCalc.getBounce()));
         conversionLabel.setText(String.valueOf(serverLogCalc.getConver()));
-        ctrLabel.setText(String.format("%.02f",clickCalculator.getCTR()));
+        ctrLabel.setText(String.format("%.02f",clickCalculator.getCTR()) + "%");
         cpaLabel.setText("£" + String.format("%.02f",serverLogCalc.getCPA()));
     }
 

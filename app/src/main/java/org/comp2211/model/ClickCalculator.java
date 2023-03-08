@@ -96,7 +96,7 @@ public class ClickCalculator {
     public float getCTR() {
         float click = getTotalClicks();
         float impr = imprCalc.getImpr();
-        return click / impr;
+        return click / impr * 100;
     }
 
     public void closeConn() {
