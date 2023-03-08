@@ -3,20 +3,13 @@ package org.comp2211.model;
 import java.sql.*;
 
 public class ServerLogCalculator {
-    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
-    private Connection conn;
-    private ClickCalculator clickCalc = new ClickCalculator();
-    private ImpressionCalculator imprCalc = new ImpressionCalculator();
-
+    DatabaseManager dbManager;
     public ServerLogCalculator() {
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        dbManager = new DatabaseManager();
     }
     public int getBounce() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet bounceResult = stmt.executeQuery("SELECT COUNT (*) AS bounce FROM server_log WHERE pages_viewed =  1 OR entry_date = exit_date;");
             while (bounceResult.next()) {
@@ -25,6 +18,7 @@ public class ServerLogCalculator {
             }
             bounceResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,6 +32,7 @@ public class ServerLogCalculator {
      */
     public int getConver() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet ConverResult = stmt.executeQuery("SELECT COUNT (*) AS Conversion FROM server_log WHERE conversion = 1;");
             while (ConverResult.next()) {
@@ -46,6 +41,7 @@ public class ServerLogCalculator {
             }
             ConverResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,6 +51,7 @@ public class ServerLogCalculator {
 
     public float getBounceRate() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             float bounce = this.getBounce();
             ResultSet bounceRateResult = stmt.executeQuery("SELECT COUNT (*) AS total_clicks FROM server_log;");
@@ -65,6 +62,7 @@ public class ServerLogCalculator {
 
             bounceRateResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,6 +76,7 @@ public class ServerLogCalculator {
      */
     public double getCPA() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet cpaResult = stmt.executeQuery("SELECT SUM (impression.cost) AS impr_cost, SUM (clicks.cost) AS click_cost FROM impression INNER JOIN clicks on clicks.id = impression.id AND click_date = impress_date INNER JOIN ( SELECT entry_date, id AS server_log_id FROM server_log WHERE conversion = 1 ) ON entry_date = click_date AND server_log_id = clicks.id;");
             while (cpaResult.next()) {
@@ -87,23 +86,13 @@ public class ServerLogCalculator {
             }
             cpaResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return -1;
     }
-
-    public void closeConn() {
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
-        ServerLogCalculator calc = new ServerLogCalculator();
-        System.out.println(String.format("%.02f" ,calc.getCPA()));
     }
 }

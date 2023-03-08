@@ -9,22 +9,17 @@ import java.sql.*;
 // SELECT strftime('%d-%m-%Y %H:%M:%f', click_date/1000.0, 'unixepoch') FROM clicks WHERE id = '8895519749317550080' - FOR DATE/TIME
 public class ClickCalculator {
 //    private String databaseFilePath = "src/main/java/org/comp2211/resources/testSQL/test.db";
-    private String databaseFilePath =
-      "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
-    private Connection conn;
+    private DatabaseManager dbManager;
     private ImpressionCalculator imprCalc = new ImpressionCalculator();
 
     public ClickCalculator() {
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        dbManager = new DatabaseManager();
     }
 
     // - Total Number of Clicks
     public int getTotalClicks() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT COUNT(*) FROM clicks ");
             while (intResult.next()) {
@@ -32,6 +27,7 @@ public class ClickCalculator {
             }
             intResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,6 +38,7 @@ public class ClickCalculator {
     // - Total Number of Unique Clicks
     public int getUniqueClicks() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT COUNT(DISTINCT id) FROM clicks");
             while (intResult.next()) {
@@ -49,6 +46,7 @@ public class ClickCalculator {
             }
             intResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,6 +57,7 @@ public class ClickCalculator {
     // - Total Cost of all clicks
     public float getTotalCost() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM clicks");
             while (intResult.next()) {
@@ -68,6 +67,7 @@ public class ClickCalculator {
             }
             intResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,6 +78,7 @@ public class ClickCalculator {
     // - Cost per Click AKA sum of costs / number of clicks
     public double getCPC() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost)/COUNT(*) FROM clicks");
             while (intResult.next()) {
@@ -86,6 +87,7 @@ public class ClickCalculator {
             }
             intResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,20 +101,6 @@ public class ClickCalculator {
         return click / impr * 100;
     }
 
-    public void closeConn() {
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
-        ClickCalculator clickCalc = new ClickCalculator();
-        System.out.println(clickCalc.getTotalClicks());
-        System.out.println(clickCalc.getUniqueClicks());
-        System.out.println(clickCalc.getTotalCost());
-        System.out.println(clickCalc.getCPC());
-        clickCalc.closeConn();
     }
 }

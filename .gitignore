@@ -9,3 +9,5 @@
 # IntelliJ complie folder
 /app/target/
 /app/.idea/
+/app/out/
+/app/testdb.db/

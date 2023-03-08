@@ -9,19 +9,20 @@ import java.util.List;
 
 public class ImpressionImporter {
     private String imprFilePath;
-    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
-
+    private DatabaseManager dbManager;
     /**
      * Initialise the connection to db.
      */
-    public ImpressionImporter() {}
+    public ImpressionImporter() {
+        dbManager = new DatabaseManager();
+    }
 
     /**
      * Drop the existing impression table and creates a new one.
      */
     public void initialise() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
+            Connection conn = dbManager.getConn();
             Statement statement = conn.createStatement();
             DatabaseMetaData metaData = conn.getMetaData();
             ResultSet tables = metaData.getTables(null, null, "impression", null);
@@ -60,7 +61,7 @@ public class ImpressionImporter {
             impressionLog.close();
             bufferedLog.close();
             reader.close();
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
+            Connection conn = dbManager.getConn();
             conn.setAutoCommit(false);
             PreparedStatement stmt = conn.prepareStatement(insertStmt);
             int i = 1000000;

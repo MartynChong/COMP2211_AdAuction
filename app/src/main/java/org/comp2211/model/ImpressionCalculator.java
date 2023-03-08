@@ -3,19 +3,15 @@ package org.comp2211.model;
 import java.sql.*;
 
 public class ImpressionCalculator {
-    private String databaseFilePath = "src\\main\\java\\org\\comp2211\\resources\\testSQL\\test.db";
-    private Connection conn;
+    DatabaseManager dbManager;
 
     public ImpressionCalculator() {
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        dbManager = new DatabaseManager();
     }
 
     public int getImpr() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet uniquesResult = stmt.executeQuery("SELECT COUNT (id) AS \"Uniques\" FROM impression;");
             while (uniquesResult.next()) {
@@ -24,6 +20,7 @@ public class ImpressionCalculator {
             }
             uniquesResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,6 +34,7 @@ public class ImpressionCalculator {
      */
     public float getCPM() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet uniquesResult = stmt.executeQuery("SELECT SUM (cost) AS \"CPM\" FROM impression;");
             float costs = 0;
@@ -47,6 +45,7 @@ public class ImpressionCalculator {
 
             uniquesResult.close();
             stmt.close();
+            conn.close();
             return (costs / imprs) * 1000;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,6 +55,7 @@ public class ImpressionCalculator {
 
     public float getImprCost() {
         try {
+            Connection conn = dbManager.getConn();
             Statement stmt = conn.createStatement();
             ResultSet intResult = stmt.executeQuery("SELECT SUM(cost) FROM impression;");
             while (intResult.next()) {
@@ -64,6 +64,7 @@ public class ImpressionCalculator {
             }
             intResult.close();
             stmt.close();
+            conn.close();
             return 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,17 +72,6 @@ public class ImpressionCalculator {
         return -1;
     }
 
-    public void closeConn() {
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
-        ImpressionCalculator imprCalc = new ImpressionCalculator();
-        System.out.println(imprCalc.getCPM());
-        imprCalc.closeConn();
     }
 }
