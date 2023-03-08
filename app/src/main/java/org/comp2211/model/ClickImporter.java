@@ -24,10 +24,10 @@ public class ClickImporter {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFilePath);
             Statement statement = conn.createStatement();
             DatabaseMetaData metaData = conn.getMetaData();
-            ResultSet tables = metaData.getTables(null, null, "click", null);
+            ResultSet tables = metaData.getTables(null, null, "clicks", null);
             if (tables.next()) {
                 tables.close();
-                boolean dropExist = statement.execute("DROP TABLE click;"); // drop old table if there is any
+                boolean dropExist = statement.execute("DROP TABLE clicks;"); // drop old table if there is any
                 if (dropExist) {
                     System.out.println("No table existed to drop");
                 } else {
@@ -75,11 +75,9 @@ public class ClickImporter {
                 stmt.addBatch();
                 stmt.clearParameters();
                 i--;
-                System.out.println(i);
                 if (i == 0) {
-                    System.out.println(i);
                     stmt.executeBatch();
-                    i = 5000000;
+                    i = 1000000;
                 }
             }
             stmt.executeBatch();
