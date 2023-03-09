@@ -27,15 +27,15 @@ public class HomepageController {
 
     public void handleRefreshButton(){
         totalClicksLabel.setText(Integer.toString(clickCalculator.getTotalClicks()));
-        totalCostLabel.setText("£" + String.format("%.02f", clickCalculator.getTotalCost()));
-        cPCLabel.setText("£" + clickCalculator.getCPC());
+        totalCostLabel.setText("£" + String.format("%.02f", clickCalculator.getTotalCost() / 100));
+        cPCLabel.setText(clickCalculator.getCPC() + " pence");
         totalImprLabel.setText(String.valueOf(impressionCalculator.getImpr()));
         uniqueImprLabel.setText(String.valueOf(clickCalculator.getUniqueClicks()));
-        cPMLabel.setText("£" + String.format("%.02f",impressionCalculator.getCPM()));
+        cPMLabel.setText(String.format("%.02f",impressionCalculator.getCPM())+ " pence");
         bounceLabel.setText(String.valueOf(serverLogCalc.getBounce()));
         conversionLabel.setText(String.valueOf(serverLogCalc.getConver()));
         ctrLabel.setText(String.format("%.02f",clickCalculator.getCTR()) + "%");
-        cpaLabel.setText("£" + String.format("%.02f",serverLogCalc.getCPA()));
+        cpaLabel.setText(String.format("%.02f",serverLogCalc.getCPA())+ " pence");
         bounceRateLabel.setText(String.format("%.02f", serverLogCalc.getBounceRate()) + "%");
     }
 
