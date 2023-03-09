@@ -55,7 +55,7 @@ class ClickCalculatorTest {
     @Test
     @DisplayName("Test calculating click through rate")
     void testCTR() {
-        assertEquals(4.92 ,clickCalc.getCTR());
+        assertEquals(4.921374 , String.format("%.06f", clickCalc.getCTR()));
     }
 
 }
