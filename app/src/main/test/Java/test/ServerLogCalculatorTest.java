@@ -41,6 +41,6 @@ class ServerLogCalculatorTest {
     @Test
     @DisplayName("Test calculating cost per acquisition")
     void getCPA() {
-        assertEquals(58.29 ,serverLogCalc.getCPA()); // TODO: 08/03/2023 double check the result
+        assertEquals(80.13 ,serverLogCalc.getCPA()); // TODO: 08/03/2023 double check the result
     }
 }

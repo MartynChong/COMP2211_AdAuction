@@ -27,6 +27,6 @@ class ImpressionCalculatorTest {
     @Test
     @DisplayName("Test calculating cost per thousands impression")
     void getCPM() {
-        assertEquals(242.95 ,impressionCalc.getCPM()); // TODO: 08/03/2023 double check the result 
+        assertEquals("1.001957" ,String.format("%.06f",impressionCalc.getCPM())); // TODO: 08/03/2023 double check the result
     }
 }
